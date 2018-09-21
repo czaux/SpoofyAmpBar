@@ -23,7 +23,7 @@ limitations under the License.
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SpoofyAmpBar</title>
+    <title>SpoofyAmp</title>
 
     <link rel="manifest" href="manifest.webmanifest">
     <!-- See https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
@@ -45,11 +45,18 @@ limitations under the License.
   </head>
 
   <body>
-    <h1>Web Application Manifest Sample</h1>
-    <button id="installbutt">Install App</button>
-
-    <h3>Hey! I'm a web app!</h3>
-
+    <div id="mainbody">
+        <div class="mainrow" id="head">
+            <h2>You like skrillex don't you squidward?</h2>
+            <div id="uploader"><button id="uploadb">Upload Music</button></div>
+        </div>
+        <div class="mainrow" id="played">
+            <div class="albumcover"><img src="test1.jpg"/></div>
+            <div class="albumcover"><img src="test2.jpg"/></div>
+            <div class="albumcover"><img src="test3.png"/></div>
+         </div>
+        <div class="mainrow"><h3></h3></div>
+    </div>
     <script>
 
     if ('serviceWorker' in navigator) {
