@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+Copyright 2014 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="Sample illustrating the use of the Web Application Manifest.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Web Application Manifest Sample</title>
+
+    <link rel="manifest" href="manifest.json">
+    <!-- See https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
+    <meta name="theme-color" content="#db5945">
+
+    <link rel="icon" href="../images/favicon.ico">
+
+    <link rel="stylesheet" href="../styles/main.css">
+  </head>
+
+  <body>
+    <h1>Web Application Manifest Sample</h1>
+    <button id="installbutt">Install App</button>
+
+    <h3>Hey! I'm a web app!</h3>
+
+    <!-- Built with love using Web Starter Kit -->
+    <script>
+            let installButton = document.querySelector('#installbutt');
+          
+            window.addEventListener("beforeinstallprompt", event => {
+            // Suppress automatic prompting.
+            event.preventDefault();
+        
+            // Show the (disabled-by-default) install button. This button
+            // resolves the installButtonClicked promise when clicked.
+            installButton.disabled = false;
+        
+            // Wait for the user to click the button.
+            installButton.addEventListener("click", async e => {
+                // The prompt() method can only be used once.
+                installButton.disabled = true;
+        
+                // Show the prompt.
+                const { userChoice } = await event.prompt();
+                console.info(`user choice was: ${userChoice}`);
+            });
+            });
+        </script>
+  </body>
+</html>
