@@ -40,28 +40,21 @@ limitations under the License.
 
     <h3>Hey! I'm a web app!</h3>
 
-    <!-- Built with love using Web Starter Kit -->
     <script>
-            let installButton = document.querySelector('#installbutt');
-          
-            window.addEventListener("beforeinstallprompt", event => {
-            // Suppress automatic prompting.
-            event.preventDefault();
-        
-            // Show the (disabled-by-default) install button. This button
-            // resolves the installButtonClicked promise when clicked.
-            installButton.disabled = false;
-        
-            // Wait for the user to click the button.
-            installButton.addEventListener("click", async e => {
-                // The prompt() method can only be used once.
-                installButton.disabled = true;
-        
-                // Show the prompt.
-                const { userChoice } = await event.prompt();
-                console.info(`user choice was: ${userChoice}`);
+
+    if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+                });
             });
-            });
+        }
+
         </script>
+
   </body>
 </html>
