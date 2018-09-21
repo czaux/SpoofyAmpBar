@@ -1,5 +1,7 @@
 {
     "name": "SpoofyAmpBar",
+    "short_name": "SpoofyAB",
+    "description": "Plays your fuckin music",
     "icons": [
       {
         "src": "192x192.png",
